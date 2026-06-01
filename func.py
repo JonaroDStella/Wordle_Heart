@@ -66,8 +66,7 @@ def fast_match(word, words, at_pos, has_char, indices):
             # Position must match
             result &= at_pos[i].get(char, set())
         else:
-            # Char must NOT appear in word
-            if char in has_char[i]:
-                result -= has_char[i][char]
+            # Char must NOT appear at this position
+            result -= at_pos[i].get(char, set())
     
     return result
